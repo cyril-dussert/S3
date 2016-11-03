@@ -15,14 +15,14 @@
         "us-west-2": ["s3-us-west-2.amazonaws.com"],
         "us-gov-west-1": ["s3-us-gov-west-1.amazonaws.com",
                           "s3-fips-us-gov-west-1.amazonaws.com"],
-        "localregion": ["scality"],
+        "localregion": ["scalitys3.kermit-beta.intraorange"],
         "test-region": ["s3.scality.test"]
     },
     "sproxyd": {
         "bootstrap": ["localhost:8181"]
     },
     "bucketd": {
-        "bootstrap": ["scality"]
+        "bootstrap": ["scalitys3.kermit-beta.intraorange"]
     },
     "vaultd": {
         "host": "localhost",
