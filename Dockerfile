@@ -5,10 +5,11 @@ WORKDIR /usr/src/app
 
 COPY . /usr/src/app
 RUN npm install
+RUN npm install mocha
 
 CMD [ "npm", "start" ]
 
 VOLUME ["/usr/src/app/localData","/usr/src/app/localMetadata"]
 
-EXPOSE 8000
+EXPOSE 8080
 
