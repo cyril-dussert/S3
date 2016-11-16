@@ -48,8 +48,30 @@ if (config.backends.data !== 'file' && config.backends.metadata !== 'file') {
 const dataPath = config.filePaths.dataPath;
 const metadataPath = config.filePaths.metadataPath;
 
-fs.accessSync(dataPath, fs.F_OK | fs.R_OK | fs.W_OK);
-fs.accessSync(metadataPath, fs.F_OK | fs.R_OK | fs.W_OK);
+//Checking if storage paths are existing. Creating it if not.
+try{
+    fs.accessSync(dataPath, fs.F_OK | fs.R_OK | fs.W_OK);
+}
+catch(e)
+{
+    if (e.code == 'ENOENT') { // no such file or directory. File really does not exist
+      logger.info('Data path does not exist.... Creating it');
+      fs.mkdirSync(dataPath);
+    }
+}
+
+try{
+    fs.accessSync(metadataPath, fs.F_OK | fs.R_OK | fs.W_OK);
+}
+catch(e)
+{
+    if (e.code == 'ENOENT') { // no such file or directory. File really does not exist
+      logger.info('Meta data path does not exist.... Creating it');
+      fs.mkdirSync(metadataPath);
+    }
+}
+
+
 const warning = 'WARNING: Synchronization directory updates are not ' +
     'supported on this platform. Newly written data could be lost ' +
     'if your system crashes before the operating system is able to ' +
