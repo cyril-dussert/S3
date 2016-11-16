@@ -311,9 +311,11 @@ describe('aws-node-sdk test suite as registered user', function testSuite() {
         },
         { it: 'should get a range from the second part of an object ' +
             'put by multipart upload',
-            range: 'bytes=5242881-5242890',
+            // The completed MPU byte count starts at 0, so the first part ends
+            // at byte 5242879 and the second part begins at byte 5242880
+            range: 'bytes=5242880-5242889',
             contentLength: '10',
-            contentRange: 'bytes 5242881-5242890/10485760',
+            contentRange: 'bytes 5242880-5242889/10485760',
             // A range from the second part should just contain 1
             expectedBuff: Buffer.alloc(10, 1),
         },
@@ -437,6 +439,7 @@ describe('aws-node-sdk test suite as registered user', function testSuite() {
                     return done(new Error(
                         `error getting object range: ${err}`));
                 }
+                assert.strictEqual(data.AcceptRanges, 'bytes');
                 assert.strictEqual(data.ContentLength, test.contentLength);
                 assert.strictEqual(data.ContentRange, test.contentRange);
                 assert.deepStrictEqual(data.Body, test.expectedBuff);
