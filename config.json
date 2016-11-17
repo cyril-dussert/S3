@@ -23,7 +23,7 @@
         "bootstrap": ["localhost:8181"]
     },
     "bucketd": {
-        "bootstrap": ["scalitynj6-scalitycdd.kermit-beta.intraorange"]
+        "bootstrap": ["s3.scality.test"]
     },
     "vaultd": {
         "host": "localhost",
