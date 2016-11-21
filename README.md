@@ -6,6 +6,7 @@
 [![Scality CI][badgepriv]](http://ci.ironmann.io/gh/scality/S3)
 
 ## Learn more at [s3.scality.com](http://s3.scality.com)
+This version is optimized for running on OpenShift
 
 ## Contributing
 
