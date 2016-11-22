@@ -16,7 +16,7 @@
         "us-gov-west-1": ["s3-us-gov-west-1.amazonaws.com",
                           "s3-fips-us-gov-west-1.amazonaws.com"],
         "localregion": ["localhost"],
-        "specifiedregion": ["scalitynj6-scalitycdd.kermit-beta.intraorange"],
+        "specifiedregion": ["{$ROUTE_URL}"],
         "test-region": ["s3.scality.test"]
     },
     "sproxyd": {

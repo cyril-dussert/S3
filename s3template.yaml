@@ -4,7 +4,7 @@ metadata:
   annotations:
     description: A ready to use S3 Server
     iconClass: icon-nodejs
-    tags: instant-app, nodejs, s3
+    tags: instant-app, nodejs, s3, kermit
   name: s3template
 objects:
 - apiVersion: v1
@@ -207,10 +207,10 @@ parameters:
   displayName: Git Repository URL
   name: SOURCE_REPOSITORY_URL
   value: https://github.com/orangekmt/S3.git
-- description: The URL of your S3 Server
+- description: The URL of your S3 Server.
   displayName: Route hostname (set your own)
   name: ROUTE_URL
-  value: s3-server-kermit.kermit-beta.intraorange
+  value: s3-server
 - description: A secret string used to configure the Git webhook.
   displayName: Git Webhook Secret
   from: '[a-zA-Z0-9]{40}'
