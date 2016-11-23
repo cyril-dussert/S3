@@ -60,7 +60,7 @@ objects:
               "us-west-2": ["s3-us-west-2.amazonaws.com"],
               "us-gov-west-1": ["s3-us-gov-west-1.amazonaws.com",
                                 "s3-fips-us-gov-west-1.amazonaws.com"],
-              "localregion": ["localhost"],
+              "localregion": ["${LOCAL_ROUTE_URL}"],
               "specifiedregion": ["${ROUTE_URL}"],
               "test-region": ["s3.scality.test"]
           },
@@ -211,6 +211,11 @@ parameters:
   displayName: Route hostname (set your own)
   name: ROUTE_URL
   value: s3-server
+- description: scheme : [APPLICATION_NAME].[PROJECT_NAME].svc.cluster.local
+  displayName: Local url
+  name: ROUTE_URL
+  required: true
+  value: [APPLICATION_NAME].[PROJECT_NAME].svc.cluster.local
 - description: A secret string used to configure the Git webhook.
   displayName: Git Webhook Secret
   from: '[a-zA-Z0-9]{40}'
