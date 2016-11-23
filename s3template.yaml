@@ -60,8 +60,8 @@ objects:
               "us-west-2": ["s3-us-west-2.amazonaws.com"],
               "us-gov-west-1": ["s3-us-gov-west-1.amazonaws.com",
                                 "s3-fips-us-gov-west-1.amazonaws.com"],
-              "localregion": ["${LOCAL_ROUTE_URL}"],
-              "specifiedregion": ["${ROUTE_URL}"],
+              "localregion": ["${APPLICATION_NAME].${PROJECT_NAME}.svc.cluster.local"],
+              "specifiedregion": ["${APPLICATION_NAME]-${PROJECT_NAME}.kermit-beta.intraorange"],
               "test-region": ["s3.scality.test"]
           },
           "sproxyd": {
@@ -190,7 +190,6 @@ objects:
       app: ${APPLICATION_NAME}
     name: ${APPLICATION_NAME}
   spec:
-    host: ${ROUTE_URL}
     port:
       targetPort: 8080-tcp
     to:
@@ -203,19 +202,15 @@ parameters:
   name: APPLICATION_NAME
   required: true
   value: s3-server
+- description: The name of your project
+  displayName: PROJECT_NAME
+  name: PROJECT_NAME
+  required: true
+  value: awesome_project
 - description: The URL of the repository with your application source code.
   displayName: Git Repository URL
   name: SOURCE_REPOSITORY_URL
   value: https://github.com/orangekmt/S3.git
-- description: The URL of your S3 Server.
-  displayName: Route hostname (set your own)
-  name: ROUTE_URL
-  value: s3-server
-- description: scheme : [APPLICATION_NAME].[PROJECT_NAME].svc.cluster.local
-  displayName: Local url
-  name: ROUTE_URL
-  required: true
-  value: [APPLICATION_NAME].[PROJECT_NAME].svc.cluster.local
 - description: A secret string used to configure the Git webhook.
   displayName: Git Webhook Secret
   from: '[a-zA-Z0-9]{40}'
